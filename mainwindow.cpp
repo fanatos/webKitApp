@@ -67,20 +67,21 @@ void MainWindow::writeSettings(){
 
 }
 
+void MainWindow::closeEvent(QCloseEvent *event){
+
+    writeSettings();
+    event->accept();
+
+}
+
 void MainWindow::resetSettings(){
 
     QSettings settings("test1","test2");
 
     settings.clear();
     QMessageBox::about(this, tr("Reset settings"), tr("Settings reset successfully"));
+
     readSettings();
-
-}
-
-void MainWindow::closeEvent(QCloseEvent *event){
-
-    writeSettings();
-    event->accept();
 
 }
 
